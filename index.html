@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>WebChat v1.0</title>        
+        <title>TEST</title>        
     
         <style>
             body {
@@ -34,7 +34,7 @@
                 width: 700px;
                 height: 400px;
                 
-                box-shadow: 0 0 10px green, inset 0 0 5px blue;
+                box-shadow: 0 0 10px aqua, inset 0 0 5px blue;
                 border-radius: 10px;
                 
                 margin-left: auto;
@@ -42,36 +42,91 @@
                 margin-top: 50px;
             }
             
-            div#message_block {
-                float: left;
-            
+            div#wrapper {
+                
                 width: 700px;
                 height: 100px;
                 
-                margin-left: 30%;
+                margin-left: auto;
                 margin-right: auto;
                 margin-top: 10px;
+            }
+            
+            textarea#message_area {
                 
-                border-style: solid;
-                border-width: 1px;
+                float: left;
+                
+                width: 500px;
+                height: 100px;
+                
+                border-width: 0;
+                box-shadow: 0 0 10px aqua, inset 0 0 5px blue;
+                border-radius: 10px;
+                
+                font-size: 10px;
             }
             
             div#send_block {
                 
-                width: 20px;
-                height: 100px; 
+                float: right;
                 
-                border-style: solid;
-                border-width: 2px;
-            }
-             
-        </style>  
+                width: 100px;
+                height: 100px;
+                
+                box-shadow: 0 0 10px #00C4FF;
+                border-radius: 100%;
+            
+                margin-right: 0;
+                
+                background-color: #E7F5F9;
+            } 
+                         
+        </style>
+        
+        <script>
+            
+           /* var stop_animation;
+            
+            function animation() {
+                
+                var item = document.getElementById('message_area');
+                var counter = 1;
+                var flag = true;
+                
+                stop_animation = setInterval(function() {
+                    
+                    
+                    
+                    if (counter == 300) {
+                        flag = false;
+                    }
+                    
+                    if (counter == 1) {
+                        flag = true;
+                    }
+                    
+                    if (flag) {
+                        ++counter;
+                    }
+                    else
+                    {
+                        --counter;
+                    }
+                    
+                    item.style.boxShadow = '0 0 ' + counter + 'px aqua;';
+                    
+            }, 30);
+            }*/
+            
+        </script>
         
     </head>
     <body>
-        <div id="about_block">Web Chat v1.0</div>
-        <div id="chat_block"></div>
-        <div id="message_block"></div>
-        <div id="send_block"></div>
+        <div id="about_block">TEST</div>
+        <div id="chat_block" contenteditable="true"></div>
+        <div id="wrapper">            
+            <textarea id="message_area">Test!</textarea>
+            <div id="send_block"></div>
+        </div>
     </body>
 </html>
