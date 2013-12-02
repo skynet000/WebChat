@@ -1,0 +1,241 @@
+<html>
+    <head>
+        <title>Laboratory work - web chat</title>        
+    
+        <style>
+            body {
+                
+                background-image: url('gray_bg.jpg');
+                padding: 0px;
+                margin: 0px;
+            }
+            
+            div#header_block {
+                
+                width: 400px;
+                height: 50px;
+                
+                background-image: url('bg-lightl-902.jpg');
+                background: linear-gradient(to bottom, #E0FCF9, #D5EBE8);
+                
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                
+                font-size: 40pt;
+                text-shadow: 1px -1px 5px black;
+                text-align: center;
+                padding-bottom: 15px;
+                color: #94E9E6;
+                
+                box-shadow: 0 0 5px #0044FF;
+            }
+            
+            div#main_block {
+                
+                width: 400px;
+                height: 230px;
+                
+                border-radius: 10px;
+
+                margin-top: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                
+                box-shadow: 0 0 20px #8BE1EB, inset 0 0 20px #8BE1EB;
+                
+                background: linear-gradient(to bottom, #E9FBFD, #F9FDFD);
+            }
+            
+            input.input_item {
+                
+                width: 300px;
+                height: 40px;
+                
+                border-style: none;
+                border-radius: 10px;
+                
+                box-shadow: 0 0 2px #B687E5;
+                
+                margin-top: 20px;
+                
+                font-family: "verdana";
+                font-size: 14pt;
+                text-align: center;
+                color: #6A66D4;
+                
+                outline: none;
+            }
+            
+            form#enter {
+            
+                width: 300px;
+                height: 500px;
+                
+                margin-left: 50px;
+                
+                border: none;
+            }
+            
+            form#registration {
+            
+                width: 0;
+                height: 0;
+                display: none;
+                
+                margin-left: 50px;
+                margin-top: -295px;
+                
+                border: none;
+            }
+            
+            input[type="submit"], input[type="button"].for_button {
+                
+                width: 200px;
+                height: 40px;
+                
+                margin-left: 50px;
+                margin-top: 20px;
+                
+                border-style: none;
+                border-radius: 10px;
+                
+                box-shadow: 0 0 8px #39D2FF, inset 0 0 10px #39D2FF;    
+                
+                text-shadow: 0 0 10px #203ABD;
+                text-align: center;
+                font-size: 15pt;
+                color: #E7F2F3;
+                
+                background: linear-gradient(to bottom, #E7F2F3, #D1D0F0);
+                
+                outline: none;
+            }
+            
+            input[type="submit"].for_button:active {
+                
+                box-shadow: 0 0 5px #39D2FF, inset 0 0 20px #39D2FF;
+                text-shadow: 0 0 5px #203ABD;
+            }
+            
+            input[type="button"].for_button:active {
+                
+                box-shadow: 0 0 5px #39D2FF, inset 0 0 20px #39D2FF;
+                text-shadow: 0 0 5px #203ABD;
+            }
+            
+            input.input_item:focus {
+                
+                box-shadow: 0 0 20px #44D849;
+            }
+            
+            input#reg_button {
+                
+                margin-top:15px; 
+                width: 100px; 
+                height: 20px; 
+                font-size: 10pt;
+                margin-left: 100px;
+            }
+            
+            input#reg_button_send {
+                
+                margin-top:15px; 
+                width: 100px; 
+                height: 20px; 
+                font-size: 10pt;
+                margin-left: 100px;
+            }
+            
+            input#first_passw {}
+            input#second_passw {}
+            
+        </style>
+        
+        <script type="text/javascript" src="md5-implementation.js"></script>
+        <script type="text/javascript">
+            
+            var stop_div_animation;
+            var stop_form_animation;
+            
+            function div_animation() {
+                
+                var item_div = document.getElementById('main_block');
+                var counter = 1;
+                var from = 230;
+                var to = 450;
+                
+                stop_div_animation = setInterval(function() {
+                 
+                    if (Math.pow(counter, 2) >= to - from) {
+                        
+                        clearInterval(stop_div_animation);    
+                        
+                    }                       
+                        ++counter;
+                    
+                        item_div.style.height = from + Math.pow(counter, 2) + 'px';
+                    
+                }, 10);
+            }
+            
+            function form_animation() {
+                
+                var item_form = document.getElementById('registration');
+                var counter = 0;
+                
+                item_form.style.display = 'block';
+                item_form.style.opacity = 0;
+                
+                stop_form_animation = setInterval(function() {
+                
+                    if (Math.pow(counter, 2) / 100.0 > 1.0) {
+                        
+                        clearInterval(stop_form_animation);
+                    }
+                    
+                    ++counter;
+                    item_form.style.opacity = Math.pow(counter, 2) / 100.0;
+                    
+                }, 80);
+            }
+            
+            function passw_match() {
+                
+                var first_passw = document.getElementById('first_passw');
+                var second_passw = document.getElementById('second_passw');
+                var reg_button_send = document.getElementById('reg_button_send');
+                
+                if (calcMD5(calcMD5(first_passw.value)) != calcMD5(calcMD5(second_passw.value))) {
+                    
+                    first_passw.style.boxShadow = '0 0 20px #F53A34';
+                    second_passw.style.boxShadow = '0 0 20px #F53A34';
+                    reg_button_send.disabled = 'true';
+                } else {
+                    
+                    first_passw.style.boxShadow = '';
+                    second_passw.style.boxShadow = '';
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id="header_block">Web Chat</div>
+        <div id="main_block">
+            <form id="enter">
+                <input class="input_item" type="text" placeholder="Ваш логин" required><br>
+                <input class="input_item" type="password" placeholder="Ваш пароль" required><br>
+                <input class="for_button" type="submit" value="Войти">
+                <input class="for_button" id="reg_button" type="button" value="Регистрация" onclick="clearInterval(stop_div_animation); div_animation(); clearInterval(stop_form_animation); form_animation();">
+            </form>
+            <form id='registration'>
+                <input class="input_item" style="height: 30px;" type="text" placeholder="Введите логин" required><br>
+                <input class="input_item" style="height: 30px;" type="email" placeholder="Введите почту" required><br>
+                <input class="input_item" id="first_passw" style="height: 30px;" type="password" placeholder="Введите пароль" required onchange="passw_match();"><br>
+                <input class="input_item" id="second_passw" style="height: 30px;" type="password" placeholder="Подтвердите пароль" required onchange="passw_match();"><br>
+                <input class="for_button" id="reg_button_send" style="width: 140; margin-left: 80px;" type="submit" value="Зарегистрироваться">
+            </form>
+        </div>
+    </body>
+</html>

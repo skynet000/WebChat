@@ -1,89 +1,131 @@
 <html>
     <head>
-        <title>TEST</title>        
+        <title>Laboratory work - web chat</title>        
     
         <style>
             body {
                 
-                background-color: #F2F2F2;
+                background-image: url('gray_bg.jpg');
                 padding: 0px;
                 margin: 0px;
             }
             
-            div#about_block {
+            div#header_block {
                 
-                width: auto;
-                height: auto;
+                width: 400px;
+                height: 50px;
                 
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 10px;
-                
-                font-size: 30pt;
-                text-shadow: 1px -1px 5px black;
-                text-align: center;
-                color: #94E9E6;
-                
-                border-style: solid;
-                border-width: 0;
-                box-shadow: 0 0 40px #B0DCDB;
-            }
-            
-            div#chat_block {
-                
-                width: 700px;
-                height: 400px;
-                
-                box-shadow: 0 0 10px aqua, inset 0 0 5px blue;
-                border-radius: 10px;
+                background-image: url('bg-lightl-902.jpg');
+                background: linear-gradient(to bottom, #E0FCF9, #D5EBE8);
                 
                 margin-left: auto;
                 margin-right: auto;
                 margin-top: 50px;
+                
+                font-size: 40pt;
+                text-shadow: 1px -1px 5px black;
+                text-align: center;
+                padding-bottom: 15px;
+                color: #94E9E6;
+                
+                box-shadow: 0 0 5px #0044FF;
             }
             
-            div#wrapper {
+            div#main_block {
                 
-                width: 700px;
+                width: 400px;
+                height: 500px;
+                
+                background-image: url('bg-lightl-902.jpg');
+                box-shadow: 0 0 5px #0044FF;
+                
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+            }
+            
+            div#chat_block {
+                
+                width: 600px;
+                height: 300px;
+                
+                box-shadow: 0 0 10px #39D2FF, inset 0 0 10px #39D2FF;
+                border-radius: 10px;
+
+                margin-top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+                
+                background-color: #F9FAFA;
+            }
+            
+            form#wrapper {
+                
+                width: 600px;
                 height: 100px;
                 
                 margin-left: auto;
                 margin-right: auto;
-                margin-top: 10px;
+                margin-top: 12px;
             }
             
             textarea#message_area {
                 
                 float: left;
                 
-                width: 500px;
-                height: 100px;
+                width: 450px;
+                height: 60px;
                 
                 border-width: 0;
-                box-shadow: 0 0 10px aqua, inset 0 0 5px blue;
+                box-shadow: 0 0 20px #39D2FF;
                 border-radius: 10px;
                 
-                font-size: 10px;
+                font-size: 10pt;
+                font-family: "verdana";
+                
+                outline: none;
+                resize: none;
             }
             
-            div#send_block {
+            textarea#message_area:focus {
+            
+                box-shadow: 0 0 20px #F53A34;
+            }
+            
+            input#send_button {
                 
                 float: right;
                 
-                width: 100px;
-                height: 100px;
+                width: 130px;
+                height: 60px;
                 
-                box-shadow: 0 0 10px #00C4FF;
-                border-radius: 100%;
+                box-shadow: 0 0 10px #39D2FF, inset 0 0 10px #39D2FF;
+                border-radius: 30%;
+                border-style: none;
+                
+                margin-right: 10px;
+                
+                text-shadow: 0 0 10px #203ABD;
+                text-align: center;
+                font-size: 21pt;
+                color: #E7F2F3;
+                
+                outline: none;
+                
+                background: linear-gradient(to bottom, #E7F2F3, #6BEFF3);
+            }
             
-                margin-right: 0;
+            input#send_button:active {
                 
-                background-color: #E7F5F9;
-            } 
-                         
+                box-shadow: 0 0 10px #39D2FF, inset 0 0 20px #39D2FF;
+                text-shadow: 0 0 5px #203ABD;
+            }            
+               
         </style>
         
-        <script>
+        <script type="text/javascript" src="jquery-2.0.3.js"></script>
+        
+        <script type="text/javascript">
             
            /* var stop_animation;
             
@@ -118,15 +160,15 @@
             }, 30);
             }*/
             
+            
         </script>
-        
     </head>
     <body>
-        <div id="about_block">TEST</div>
-        <div id="chat_block" contenteditable="true"></div>
-        <div id="wrapper">            
-            <textarea id="message_area">Test!</textarea>
-            <div id="send_block"></div>
-        </div>
+        <div id="header_block">Web Chat</div>
+            <div id="chat_block"></div>
+            <form id="wrapper">            
+                <textarea id="message_area" form="wrapper">Test!</textarea>
+                <input id="send_button" type="button" value="Send" readonly="true" name="send_msg">
+            </form>
     </body>
 </html>
